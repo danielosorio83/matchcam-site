@@ -1,10 +1,20 @@
 # matchcam-site
 
-Static pages for the MatchCam app, served with GitHub Pages:
+Static pages for the MatchCam app, served with GitHub Pages.
 
-- `index.html`: home page (OAuth consent screen homepage)
-- `privacy.html`: privacy policy (App Store, Google Play and Google OAuth)
-- `terms.html`: terms of use (required for auto-renewable subscriptions)
-- `support.html`: support page (App Store support URL)
+**Home:** https://danielosorio83.github.io/matchcam-site/
+
+| Page | URL | Used for |
+|---|---|---|
+| `index.html` | https://danielosorio83.github.io/matchcam-site/ | Home page (Google OAuth consent screen homepage, store listings) |
+| `privacy.html` | https://danielosorio83.github.io/matchcam-site/privacy.html | Privacy policy (App Store, Google Play, Google OAuth, in-app links) |
+| `terms.html` | https://danielosorio83.github.io/matchcam-site/terms.html | Terms of use (required for auto-renewable subscriptions) |
+| `support.html` | https://danielosorio83.github.io/matchcam-site/support.html | Support page (App Store support URL) |
+
+Contact: matchcam2026@gmail.com
+
+## Editing
 
 Plain HTML and CSS, no build step. Edit a page and push to `main` to publish.
+
+The privacy policy and terms are versioned. When either changes, bump the version, set the new effective date, and add a row to its "Version history" table so users can see what changed and when.
