@@ -54,7 +54,7 @@ h3 { font-size: 17px; margin: 20px 0 4px; }
 .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 6px 20px rgba(19, 37, 78, 0.25); }
 .hero .text { flex: 1 1 280px; }
 .card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--yellow); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 24px 0; }
 .features .card { margin: 0; }
 .features h3 { margin-top: 0; color: var(--card-title); }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
