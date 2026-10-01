@@ -1,24 +1,30 @@
+/* Brand colors taken from the in-app watermark: "Match" yellow and "Cam" navy. */
 :root {
-  --blue: #1A33A3;
-  --yellow: #FDC206;
+  --navy: #13254E;
+  --yellow: #F4B806;
   --bg: #ffffff;
-  --surface: #f4f6fb;
-  --text: #14182a;
-  --muted: #56607a;
-  --border: #e1e5ef;
-  --link: #1A33A3;
-  --header-bg: #1A33A3;
-  --header-text: #ffffff;
+  --surface: #f5f7fb;
+  --text: #13254E;
+  --muted: #55607a;
+  --border: #e2e6ef;
+  --link: #13254E;
+  --header-bg: #ffffff;
+  --nav: #13254E;
+  --nav-active: #13254E;
+  --card-title: #13254E;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e1120;
-    --surface: #171b30;
-    --text: #eceef6;
-    --muted: #a3abc4;
-    --border: #262c47;
-    --link: #9fb2ff;
-    --header-bg: #13246f;
+    --bg: #0d1630;
+    --surface: #14214a;
+    --text: #eef1f8;
+    --muted: #a9b3cc;
+    --border: #22305c;
+    --link: #F4B806;
+    --header-bg: #13254E;
+    --nav: rgba(255, 255, 255, 0.8);
+    --nav-active: #ffffff;
+    --card-title: #F4B806;
   }
 }
 * { box-sizing: border-box; }
@@ -31,27 +37,26 @@ body {
 a { color: var(--link); }
 .site-header { background: var(--header-bg); border-bottom: 4px solid var(--yellow); }
 .site-header .inner, main, footer { max-width: 760px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
-.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--header-text); text-decoration: none; }
-.brand img { width: 36px; height: 36px; border-radius: 8px; }
-.brand span { color: var(--yellow); }
+.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; text-decoration: none; }
+.brand img { height: 44px; width: auto; display: block; border-radius: 10px; }
 nav { display: flex; gap: 18px; flex-wrap: wrap; }
-nav a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 15px; padding-bottom: 2px; border-bottom: 2px solid transparent; }
-nav a[aria-current="page"], nav a:hover { color: #ffffff; border-bottom-color: var(--yellow); }
+nav a { color: var(--nav); text-decoration: none; font-size: 15px; font-weight: 600; padding-bottom: 2px; border-bottom: 2px solid transparent; }
+nav a[aria-current="page"], nav a:hover { color: var(--nav-active); border-bottom-color: var(--yellow); }
 main { padding-top: 32px; padding-bottom: 48px; }
 h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; }
 h2 { font-size: 21px; margin: 32px 0 8px; }
 h3 { font-size: 17px; margin: 20px 0 4px; }
 .meta { display: inline-block; font-size: 14px; color: var(--muted); margin-bottom: 24px; }
-.version { display: inline-block; background: var(--yellow); color: #14182a; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 2px 10px; margin-right: 8px; }
+.version { display: inline-block; background: var(--yellow); color: #13254E; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 2px 10px; margin-right: 8px; }
 .lead { font-size: 19px; color: var(--muted); }
 .hero { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
-.hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 6px 20px rgba(26, 51, 163, 0.25); }
+.hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 6px 20px rgba(19, 37, 78, 0.25); }
 .hero .text { flex: 1 1 280px; }
 .card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--yellow); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
 .features .card { margin: 0; }
-.features h3 { margin-top: 0; color: var(--link); }
+.features h3 { margin-top: 0; color: var(--card-title); }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
 th { color: var(--muted); font-weight: 600; }
