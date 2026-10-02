@@ -7,6 +7,7 @@ Static pages for the MatchCam app, served with GitHub Pages.
 | Page | URL | Used for |
 |---|---|---|
 | `index.html` | https://danielosorio83.github.io/matchcam-site/ | Home page (Google OAuth consent screen homepage, store listings) |
+| `features.html` | https://danielosorio83.github.io/matchcam-site/features.html | Full feature list with Free vs Pro comparison (linked from the home page and the menu) |
 | `privacy.html` | https://danielosorio83.github.io/matchcam-site/privacy.html | Privacy policy (App Store, Google Play, Google OAuth, in-app links) |
 | `terms.html` | https://danielosorio83.github.io/matchcam-site/terms.html | Terms of use (required for auto-renewable subscriptions) |
 | `support.html` | https://danielosorio83.github.io/matchcam-site/support.html | Support page (App Store support URL) |
