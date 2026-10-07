@@ -4,73 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MatchCam</title>
-<meta name="description" content="Record volleyball matches with a live scoreboard, mark rallies and upload to YouTube.">
+<meta name="description" content="Record volleyball matches with a live scoreboard, mark rallies and share highlights.">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 <header class="site-header">
   <div class="inner">
-    <a class="brand" href="index.html"><img src="assets/images/wordmark.png" alt="MatchCam" height="44"></a>
-    <nav><a href="index.html" aria-current="page">Home</a><a href="features.html">Features</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    <a class="brand" href="index.html" aria-label="MatchCam home"><img src="assets/images/logo.png" alt="" width="44" height="44"><span class="wordmark"><span class="match">Match</span><span class="cam">Cam</span></span></a>
+    <nav aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="features.html">Features</a><a href="how-to.html">How to</a><a href="pro.html">Pro</a><a href="support.html">Support</a></nav>
   </div>
 </header>
-<main>
-<div class="hero">
-  <img src="assets/images/logo.png" alt="MatchCam app icon" width="120" height="120">
-  <div class="text">
-    <h1>Record every match with a live scoreboard.</h1>
-    <p class="lead">MatchCam records volleyball matches on your iPhone or Android phone with the score burned into the video, marks every rally, and turns them into highlights you can share.</p>
-    <p><a class="button" href="features.html">See all features and Free vs Pro</a></p>
+<main id="content">
+<section class="hero">
+  <div>
+    <h1>Record every match with the score on screen.</h1>
+    <p class="lead">MatchCam films volleyball on your iPhone or Android phone with a live scoreboard burned into the video. Mark the rallies that matter and turn them into clips you can share.</p>
+    <div class="cta">
+      <a class="button" href="features.html">See what it does</a>
+      <a class="button ghost" href="how-to.html">How it works</a>
+    </div>
   </div>
+  <div class="court" role="img" aria-label="Illustration of a MatchCam scoreboard over a volleyball court">
+    <div class="rec"><i></i>REC 24:31</div>
+    <div class="scoreboard">
+      <div class="team"><span class="swatch" style="background:#E5384B"></span>APEX</div>
+      <div class="pts">18<span class="sets">SET 2</span>15</div>
+      <div class="team right">BNSS<span class="swatch" style="background:#1F6FEB"></span></div>
+    </div>
+  </div>
+</section>
+
+<h2>Three ways to play a match</h2>
+<div class="modes">
+  <div class="mode"><h3>Record</h3><p>Film the match with the scoreboard in the video. Free.</p></div>
+  <div class="mode"><h3>Scorekeeper</h3><p>Keep score without the camera, then add video later. Free.</p></div>
+  <div class="mode"><h3>Remote</h3><p>Score from a second phone while the first one records. Free to control; the recording phone needs Pro.</p></div>
 </div>
 
-<h2>Record</h2>
+<h2>On the court</h2>
 <div class="features">
-  <div class="card"><h3>Live scoreboard in the video</h3><p>Team names and colors, score, sets and match timer are recorded into the video, so every clip shows the score. A small MatchCam watermark sits in the corner.</p></div>
-  <div class="card"><h3>Sharp recording</h3><p>1080p on iPhone and up to 4K on Android, with zoom, pause/resume and audio.</p></div>
-  <div class="card"><h3>Crash recovery</h3><p>If the app is interrupted while recording, the recorded segments are recovered into one video on the next launch.</p></div>
-  <div class="card"><h3>Pause and timeouts</h3><p>Pause and resume without splitting the video. A 30-second timeout pauses the recording until the next point.</p></div>
-</div>
-
-<h2>Keep score</h2>
-<div class="features">
-  <div class="card"><h3>Scorekeeper mode</h3><p>Keep score without recording, with set history and a scoreboard you can share as an image.</p></div>
-  <div class="card"><h3>Be the remote</h3><p>Use your phone as a wireless remote for a phone recording with MatchCam Pro. Pair with a QR code and a 6-digit PIN; iPhone and Android work together.</p></div>
+  <div class="card"><h3>Live scoreboard in the video</h3><p>Team names and colors, points, sets and the match clock are drawn into every frame, so every clip shows the score.</p></div>
+  <div class="card"><h3>Sharp, in one file</h3><p>Record in 4K, 1080p or 720p with zoom and audio. Pause and resume without splitting the video.</p></div>
+  <div class="card"><h3>Volleyball rules built in</h3><p>Best of 3 or 5, or your own sets and points. Sets and matches end on their own, with a side-swap button and a 60-second timeout.</p></div>
   <div class="card"><h3>Apple Watch</h3><p>Score, run the timer, call timeouts and mark rallies from your wrist.</p></div>
-  <div class="card"><h3>Volleyball rules</h3><p>Official best-of-3 or best-of-5, or custom sets, points, tie-break and cap. Automatic set and match detection and a side-swap button.</p></div>
 </div>
 
-<h2>After the match</h2>
+<h2>After the whistle</h2>
 <div class="features">
-  <div class="card"><h3>Rallies</h3><p>Mark the rallies that matter during the match, then review, favorite and trim each clip.</p></div>
-  <div class="card"><h3>Match history</h3><p>Every match is saved with per-set scores, duration, video and rallies. Link a YouTube or other video link to any match.</p></div>
-  <div class="card"><h3>Annotate a video from another camera</h3><p>Kept score without recording? Link a video from your library and add the points while you watch it.</p></div>
-  <div class="card"><h3>Tournaments</h3><p>Organize matches by tournament and round, with brackets and results saved automatically.</p></div>
+  <div class="card"><h3>Rally highlights</h3><p>Tap the heart during the match to mark a rally. Afterwards, trim each one and save it as its own clip.</p></div>
+  <div class="card"><h3>Teams, seasons and rivals</h3><p>Set up your team once with its colors for each season. Rivals are remembered as you play them.</p></div>
+  <div class="card"><h3>Tournaments</h3><p>Plan rounds and matches, see what is next on Home, and have results saved back to the tournament.</p></div>
+  <div class="card"><h3>History and stats</h3><p>Every match keeps its set scores, duration, video and rallies. Link a YouTube video to any match.</p></div>
 </div>
+
+<section class="consent" aria-labelledby="first-record">
+  <h2 id="first-record">Before you record your first match</h2>
+  <p>The first time you record, MatchCam asks you to confirm and accept the Terms of Use. You agree that:</p>
+  <ul>
+    <li>Recordings are for personal use.</li>
+    <li>I have the permission of everyone involved, including the parents or guardians of minors.</li>
+    <li>I will not use MatchCam to upload content other than what it is designed for: volleyball matches and their highlights.</li>
+  </ul>
+  <p>You can read this again any time in Settings &rarr; Help &rarr; Review recording terms. <a href="terms.html#recording-terms">Read the recording terms</a>.</p>
+</section>
 
 <h2>MatchCam Pro</h2>
-<div class="features">
-  <div class="card"><h3>YouTube upload</h3><p>Upload a match to your own channel with the title, description and set chapters filled in, and keep a tournament's matches in one playlist.</p></div>
-  <div class="card"><h3>Live streaming</h3><p>Stream the match with the scoreboard to YouTube Live, Twitch or any RTMP server while you record.</p></div>
-  <div class="card"><h3>Remote Connect</h3><p>Let other phones control the score and recording over Wi-Fi. The phones that connect as a remote don't need Pro.</p></div>
-  <div class="card"><h3>Highlight reel</h3><p>Export your marked rallies as a single highlight video.</p></div>
-  <div class="card"><h3>Scoreboard export</h3><p>Export an annotated video from another camera with the scoreboard burned in.</p></div>
-  <div class="card"><h3>Backup &amp; restore</h3><p>Export your match history to iCloud Drive, Google Drive or any cloud storage and restore it on a new phone.</p></div>
-</div>
-<p>MatchCam Pro is a monthly or yearly subscription. Compare <a href="features.html#compare">Free and Pro</a>, or see the <a href="terms.html">Terms of Use</a>.</p>
+<p>Recording and scoring a match is free. Pro adds the extras that publish, connect or protect your matches: YouTube upload, live streaming, the Clip Editor and highlight reel, Remote Connect and backup.</p>
+<p><a class="button" href="pro.html">Compare Free and Pro</a></p>
 
 <h2>Requirements</h2>
 <ul>
   <li>iPhone with iOS 26 or later. Apple Watch is optional.</li>
   <li>Android phone with Android 8.0 or later.</li>
-  <li>Remote control and live streaming need a Wi-Fi or internet connection.</li>
+  <li>Remote control, live streaming and YouTube upload need Wi-Fi or an internet connection.</li>
 </ul>
 <p>Questions? Visit <a href="support.html">Support</a>.</p>
 </main>
 <footer>
-  <p>© 2026 Daniel Osorio · <a href="features.html">Features</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · <a href="support.html">Support</a> · <a href="mailto:matchcam2026@gmail.com">matchcam2026@gmail.com</a></p>
+  <div class="inner">
+    <p class="links"><a href="features.html">Features</a><a href="how-to.html">How to</a><a href="pro.html">Pro</a><a href="support.html">Support</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></p>
+    <p>© 2026 Daniel Osorio · <a href="mailto:support@matchcam.app">support@matchcam.app</a></p>
+  </div>
 </footer>
 </body>
 </html>

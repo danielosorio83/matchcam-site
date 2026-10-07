@@ -5,15 +5,15 @@ Usage (from the repository root or anywhere):
 
 Pages are written to the repository root, because their URLs are public
 (App Store, Google Play, Google OAuth consent screen and in-app links).
-Styles and images live in assets/ and are not generated.
+Styles, fonts and images live in assets/ and are not generated.
 """
 import pathlib
-UPDATED = "September 29, 2026"
-EMAIL = "matchcam2026@gmail.com"
-POLICY_VERSION = "1.0"
-PRIVACY_VERSION = "1.0"
-PRIVACY_UPDATED = "October 1, 2026"
-PAGES = [("index.html","Home"),("features.html","Features"),("support.html","Support"),("privacy.html","Privacy"),("terms.html","Terms")]
+UPDATED = "October 7, 2026"
+EMAIL = "support@matchcam.app"
+POLICY_VERSION = "1.1"
+PRIVACY_VERSION = "1.1"
+PRIVACY_UPDATED = "October 7, 2026"
+PAGES = [("index.html","Home"),("features.html","Features"),("how-to.html","How to"),("pro.html","Pro"),("support.html","Support")]
 
 def page(file, title, desc, body):
     cur = ' aria-current="page"'
@@ -30,71 +30,90 @@ def page(file, title, desc, body):
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 <header class="site-header">
   <div class="inner">
-    <a class="brand" href="index.html"><img src="assets/images/wordmark.png" alt="MatchCam" height="44"></a>
-    <nav>{nav}</nav>
+    <a class="brand" href="index.html" aria-label="MatchCam home"><img src="assets/images/logo.png" alt="" width="44" height="44"><span class="wordmark"><span class="match">Match</span><span class="cam">Cam</span></span></a>
+    <nav aria-label="Main">{nav}</nav>
   </div>
 </header>
-<main>
+<main id="content">
 {body}
 </main>
 <footer>
-  <p>© 2026 Daniel Osorio · <a href="features.html">Features</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · <a href="support.html">Support</a> · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+  <div class="inner">
+    <p class="links"><a href="features.html">Features</a><a href="how-to.html">How to</a><a href="pro.html">Pro</a><a href="support.html">Support</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></p>
+    <p>© 2026 Daniel Osorio · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+  </div>
 </footer>
 </body>
 </html>
 '''
 
-index = f'''<div class="hero">
-  <img src="assets/images/logo.png" alt="MatchCam app icon" width="120" height="120">
-  <div class="text">
-    <h1>Record every match with a live scoreboard.</h1>
-    <p class="lead">MatchCam records volleyball matches on your iPhone or Android phone with the score burned into the video, marks every rally, and turns them into highlights you can share.</p>
-    <p><a class="button" href="features.html">See all features and Free vs Pro</a></p>
+CONSENT_POINTS = '''<ul>
+    <li>Recordings are for personal use.</li>
+    <li>I have the permission of everyone involved, including the parents or guardians of minors.</li>
+    <li>I will not use MatchCam to upload content other than what it is designed for: volleyball matches and their highlights.</li>
+  </ul>'''
+
+index = f'''<section class="hero">
+  <div>
+    <h1>Record every match with the score on screen.</h1>
+    <p class="lead">MatchCam films volleyball on your iPhone or Android phone with a live scoreboard burned into the video. Mark the rallies that matter and turn them into clips you can share.</p>
+    <div class="cta">
+      <a class="button" href="features.html">See what it does</a>
+      <a class="button ghost" href="how-to.html">How it works</a>
+    </div>
   </div>
+  <div class="court" role="img" aria-label="Illustration of a MatchCam scoreboard over a volleyball court">
+    <div class="rec"><i></i>REC 24:31</div>
+    <div class="scoreboard">
+      <div class="team"><span class="swatch" style="background:#E5384B"></span>APEX</div>
+      <div class="pts">18<span class="sets">SET 2</span>15</div>
+      <div class="team right">BNSS<span class="swatch" style="background:#1F6FEB"></span></div>
+    </div>
+  </div>
+</section>
+
+<h2>Three ways to play a match</h2>
+<div class="modes">
+  <div class="mode"><h3>Record</h3><p>Film the match with the scoreboard in the video. Free.</p></div>
+  <div class="mode"><h3>Scorekeeper</h3><p>Keep score without the camera, then add video later. Free.</p></div>
+  <div class="mode"><h3>Remote</h3><p>Score from a second phone while the first one records. Free to control; the recording phone needs Pro.</p></div>
 </div>
 
-<h2>Record</h2>
+<h2>On the court</h2>
 <div class="features">
-  <div class="card"><h3>Live scoreboard in the video</h3><p>Team names and colors, score, sets and match timer are recorded into the video, so every clip shows the score. A small MatchCam watermark sits in the corner.</p></div>
-  <div class="card"><h3>Sharp recording</h3><p>1080p on iPhone and up to 4K on Android, with zoom, pause/resume and audio.</p></div>
-  <div class="card"><h3>Crash recovery</h3><p>If the app is interrupted while recording, the recorded segments are recovered into one video on the next launch.</p></div>
-  <div class="card"><h3>Pause and timeouts</h3><p>Pause and resume without splitting the video. A 30-second timeout pauses the recording until the next point.</p></div>
-</div>
-
-<h2>Keep score</h2>
-<div class="features">
-  <div class="card"><h3>Scorekeeper mode</h3><p>Keep score without recording, with set history and a scoreboard you can share as an image.</p></div>
-  <div class="card"><h3>Be the remote</h3><p>Use your phone as a wireless remote for a phone recording with MatchCam Pro. Pair with a QR code and a 6-digit PIN; iPhone and Android work together.</p></div>
+  <div class="card"><h3>Live scoreboard in the video</h3><p>Team names and colors, points, sets and the match clock are drawn into every frame, so every clip shows the score.</p></div>
+  <div class="card"><h3>Sharp, in one file</h3><p>Record in 4K, 1080p or 720p with zoom and audio. Pause and resume without splitting the video.</p></div>
+  <div class="card"><h3>Volleyball rules built in</h3><p>Best of 3 or 5, or your own sets and points. Sets and matches end on their own, with a side-swap button and a 60-second timeout.</p></div>
   <div class="card"><h3>Apple Watch</h3><p>Score, run the timer, call timeouts and mark rallies from your wrist.</p></div>
-  <div class="card"><h3>Volleyball rules</h3><p>Official best-of-3 or best-of-5, or custom sets, points, tie-break and cap. Automatic set and match detection and a side-swap button.</p></div>
 </div>
 
-<h2>After the match</h2>
+<h2>After the whistle</h2>
 <div class="features">
-  <div class="card"><h3>Rallies</h3><p>Mark the rallies that matter during the match, then review, favorite and trim each clip.</p></div>
-  <div class="card"><h3>Match history</h3><p>Every match is saved with per-set scores, duration, video and rallies. Link a YouTube or other video link to any match.</p></div>
-  <div class="card"><h3>Annotate a video from another camera</h3><p>Kept score without recording? Link a video from your library and add the points while you watch it.</p></div>
-  <div class="card"><h3>Tournaments</h3><p>Organize matches by tournament and round, with brackets and results saved automatically.</p></div>
+  <div class="card"><h3>Rally highlights</h3><p>Tap the heart during the match to mark a rally. Afterwards, trim each one and save it as its own clip.</p></div>
+  <div class="card"><h3>Teams, seasons and rivals</h3><p>Set up your team once with its colors for each season. Rivals are remembered as you play them.</p></div>
+  <div class="card"><h3>Tournaments</h3><p>Plan rounds and matches, see what is next on Home, and have results saved back to the tournament.</p></div>
+  <div class="card"><h3>History and stats</h3><p>Every match keeps its set scores, duration, video and rallies. Link a YouTube video to any match.</p></div>
 </div>
+
+<section class="consent" aria-labelledby="first-record">
+  <h2 id="first-record">Before you record your first match</h2>
+  <p>The first time you record, MatchCam asks you to confirm and accept the Terms of Use. You agree that:</p>
+  {CONSENT_POINTS}
+  <p>You can read this again any time in Settings &rarr; Help &rarr; Review recording terms. <a href="terms.html#recording-terms">Read the recording terms</a>.</p>
+</section>
 
 <h2>MatchCam Pro</h2>
-<div class="features">
-  <div class="card"><h3>YouTube upload</h3><p>Upload a match to your own channel with the title, description and set chapters filled in, and keep a tournament's matches in one playlist.</p></div>
-  <div class="card"><h3>Live streaming</h3><p>Stream the match with the scoreboard to YouTube Live, Twitch or any RTMP server while you record.</p></div>
-  <div class="card"><h3>Remote Connect</h3><p>Let other phones control the score and recording over Wi-Fi. The phones that connect as a remote don't need Pro.</p></div>
-  <div class="card"><h3>Highlight reel</h3><p>Export your marked rallies as a single highlight video.</p></div>
-  <div class="card"><h3>Scoreboard export</h3><p>Export an annotated video from another camera with the scoreboard burned in.</p></div>
-  <div class="card"><h3>Backup &amp; restore</h3><p>Export your match history to iCloud Drive, Google Drive or any cloud storage and restore it on a new phone.</p></div>
-</div>
-<p>MatchCam Pro is a monthly or yearly subscription. Compare <a href="features.html#compare">Free and Pro</a>, or see the <a href="terms.html">Terms of Use</a>.</p>
+<p>Recording and scoring a match is free. Pro adds the extras that publish, connect or protect your matches: YouTube upload, live streaming, the Clip Editor and highlight reel, Remote Connect and backup.</p>
+<p><a class="button" href="pro.html">Compare Free and Pro</a></p>
 
 <h2>Requirements</h2>
 <ul>
   <li>iPhone with iOS 26 or later. Apple Watch is optional.</li>
   <li>Android phone with Android 8.0 or later.</li>
-  <li>Remote control and live streaming need a Wi-Fi or internet connection.</li>
+  <li>Remote control, live streaming and YouTube upload need Wi-Fi or an internet connection.</li>
 </ul>
 <p>Questions? Visit <a href="support.html">Support</a>.</p>'''
 
@@ -106,7 +125,7 @@ privacy = f'''<h1>Privacy Policy</h1>
 <p>Match recordings, scores, rally marks and tournament data are stored only on your device, and videos are saved to your Camera Roll or Gallery. We do not run servers and we do not receive this data.</p>
 
 <h2>Local network and Apple Watch</h2>
-<p>When you pair a remote controller, match state (scores, team names, timer) is shared over your local Wi-Fi network between your own devices only, protected by a 6-digit PIN. With an Apple Watch, the same match state is synced between your iPhone and your watch.</p>
+<p>When you connect a remote controller, match state (scores, team names, timer) is shared over your local Wi-Fi network between your own devices only. With an Apple Watch, the same match state is synced between your iPhone and your watch.</p>
 
 <h2>Live streaming (optional)</h2>
 <p>If you start a live stream, the video and audio are sent directly from your device to the streaming server you configure (for example YouTube Live or Twitch). The stream URL and key you enter are stored only on your device. We do not receive the stream; the streaming service's own terms and privacy policy apply.</p>
@@ -135,7 +154,7 @@ privacy = f'''<h1>Privacy Policy</h1>
 </ul>
 <p>MatchCam's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 <h3>Deleting your data and revoking access</h3>
-<p>In MatchCam, go to Settings → YouTube → Disconnect YouTube. This revokes MatchCam's access at Google immediately and deletes every YouTube datum MatchCam stored, including the links it created. You can also revoke access at any time at <a href="https://security.google.com/settings/security/permissions">security.google.com/settings/security/permissions</a>. Your videos and playlists stay on YouTube; manage them in YouTube Studio.</p>
+<p>In MatchCam, go to Settings → Connections → Disconnect YouTube. This revokes MatchCam's access at Google immediately and deletes every YouTube datum MatchCam stored, including the links it created. You can also revoke access at any time at <a href="https://security.google.com/settings/security/permissions">security.google.com/settings/security/permissions</a>. Your videos and playlists stay on YouTube; manage them in YouTube Studio.</p>
 
 <h2>Purchases</h2>
 <p>MatchCam Pro subscriptions are processed by Apple (App Store) or Google (Google Play). We do not receive your payment details.</p>
@@ -152,7 +171,8 @@ privacy = f'''<h1>Privacy Policy</h1>
 <h2 id="version-history">Version history</h2>
 <table>
   <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
-  <tr><td>{PRIVACY_VERSION}</td><td>{PRIVACY_UPDATED}</td><td>First published version.</td></tr>
+  <tr><td>{PRIVACY_VERSION}</td><td>{PRIVACY_UPDATED}</td><td>Contact email changed to {EMAIL}; corrected the Settings path to disconnect YouTube and the remote connection wording.</td></tr>
+  <tr><td>1.0</td><td>October 1, 2026</td><td>First published version.</td></tr>
 </table>'''
 
 terms = f'''<h1>Terms of Use</h1>
@@ -172,6 +192,15 @@ terms = f'''<h1>Terms of Use</h1>
 
 <h2>Your content and the people you record</h2>
 <p>You own the videos and data you create with MatchCam. You are responsible for having the right to record, keep and publish them, including the consent of the players you record and, for minors, of their parents or guardians and of your club or league. Follow the rules of the venue and the competition.</p>
+
+<h2 id="recording-terms">Recording terms</h2>
+<p>Before your first recording, MatchCam asks you to confirm and accept that:</p>
+<ul>
+  <li>Recordings are for personal use.</li>
+  <li>You have the permission of everyone involved, including the parents or guardians of minors.</li>
+  <li>You will not use MatchCam to upload content other than what it is designed for: volleyball matches and their highlights.</li>
+</ul>
+<p>You can read them again in the app under Settings &rarr; Help &rarr; Review recording terms. If these terms change, the app asks you to accept them again.</p>
 
 <h2>YouTube</h2>
 <p>The YouTube upload feature uses YouTube API Services. When you use it, you also agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and your uploads are subject to YouTube's policies, including its rules on content made for kids. You choose the title, description, visibility, audience and playlist of every upload. See our <a href="privacy.html">Privacy Policy</a> for the data involved.</p>
@@ -194,66 +223,79 @@ terms = f'''<h1>Terms of Use</h1>
 <h2 id="version-history">Version history</h2>
 <table>
   <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
-  <tr><td>{POLICY_VERSION}</td><td>{UPDATED}</td><td>First published version.</td></tr>
+  <tr><td>{POLICY_VERSION}</td><td>{UPDATED}</td><td>Added the recording terms the app asks you to accept before your first recording; contact email changed to {EMAIL}.</td></tr>
+  <tr><td>1.0</td><td>September 29, 2026</td><td>First published version.</td></tr>
 </table>'''
 
 support = f'''<h1>Support</h1>
-<p class="lead">Need help? Email <a href="mailto:{EMAIL}">{EMAIL}</a>. Include your phone model, the app version (Settings → About) and what happened. We answer within 7 days.</p>
-<p>Jump to: <a href="#start">Getting started</a> · <a href="#recording">Recording</a> · <a href="#scoring">Scoring and remote control</a> · <a href="#watch">Apple Watch</a> · <a href="#after">After the match</a> · <a href="#youtube">YouTube</a> · <a href="#pro">MatchCam Pro</a> · <a href="#data">Your data</a> · <a href="#trouble">Troubleshooting</a></p>
+<p class="lead">Need help? Email <a href="mailto:{EMAIL}">{EMAIL}</a>. Include your phone model, the app version (Settings &rarr; About) and what happened. We answer within 7 days.</p>
+<p class="jump">Jump to: <a href="#start">Getting started</a> · <a href="#recording">Recording</a> · <a href="#scoring">Scoring and remote control</a> · <a href="#watch">Apple Watch</a> · <a href="#after">After the match</a> · <a href="#youtube">YouTube</a> · <a href="#pro">MatchCam Pro</a> · <a href="#data">Your data</a> · <a href="#trouble">Troubleshooting</a>. Step-by-step guides are in <a href="how-to.html">How to</a>.</p>
 
 <h2 id="start">Getting started</h2>
 <h3>How do I record my first match?</h3>
-<p>On the Game Setup screen, enter the team names and colors and choose the rules (official best-of-3 or best-of-5, or custom). Tap to start recording, hold the phone in landscape, and keep score with the buttons next to the camera view.</p>
+<p>On Home tap Start recording (or open the Record tab). In New match choose the Record mode, enter the team names and colors and choose the rules. Tap Start recording, hold the phone in landscape and keep score with the buttons next to the camera view. The first time, you read and accept the recording terms.</p>
+<h3>Why does MatchCam ask me to accept terms before recording?</h3>
+<p>To confirm that recordings are for personal use, that you have the permission of everyone involved (including the parents or guardians of minors) and that you will use MatchCam only for volleyball matches and their highlights. You see it once, and again only if the terms change. Read them in Settings &rarr; Help &rarr; Review recording terms or on the <a href="terms.html#recording-terms">Terms of Use</a>.</p>
 <h3>Can I keep score without recording?</h3>
-<p>Yes. Use Scorekeeper mode. The match is saved to your history, and you can link a video later.</p>
+<p>Yes. Choose the Scorekeeper mode in New match. The match is saved to your history, and you can link or annotate a video later.</p>
 
 <h2 id="recording">Recording</h2>
 <h3>Where are my videos saved?</h3>
 <p>In your Camera Roll (iPhone) or Gallery (Android). Scores, rallies and match details are saved in the app.</p>
 <h3>What video quality does MatchCam record?</h3>
-<p>1080p on iPhone, and up to 4K on Android. A full match can take several GB, so make sure you have free space before you start.</p>
+<p>iPhone: 4K, 1080p or 720p, depending on what your iPhone supports. Android: 720p, 1080p or 4K. Both start at 1080p, record in HEVC at 30 fps on iPhone, and use HEVC or H.264 on Android. A full match can take several GB, and MatchCam will not start a recording with less than 3 GB free.</p>
 <h3>Can I pause the recording?</h3>
-<p>Yes. Pause and resume during the match; it stays one video. Calling a 30-second timeout also pauses the recording until the next point.</p>
+<p>Yes. Pause and resume during the match; it stays one video.</p>
+<h3>How do timeouts work?</h3>
+<p>A timeout lasts 60 seconds. The video keeps the first 3 seconds with a timeout banner, then the recording pauses. It resumes after 60 seconds, as soon as a point is scored, or when you tap Resume Now.</p>
 <h3>The app closed while recording. Did I lose the video?</h3>
-<p>Usually not. Open MatchCam again: it detects the recorded segments and lets you recover them into one video or discard them.</p>
+<p>Usually not. Home shows the unsaved recording with a Review button. There you can re-merge the segments into one video or delete them.</p>
 <h3>Why is there a MatchCam watermark?</h3>
-<p>A small watermark in the corner is part of every recorded video.</p>
+<p>A small watermark in the corner is part of every recorded video, including with MatchCam Pro.</p>
 <h3>How do I live stream a match?</h3>
-<p>Live streaming is a MatchCam Pro feature. In Settings → Live Streaming, enter the RTMP server URL and stream key from YouTube Live, Twitch or another service. The stream includes the scoreboard. You need a stable internet connection.</p>
+<p>Live streaming is a MatchCam Pro feature. In Settings &rarr; Live Streaming, enter the RTMP server URL and stream key from YouTube Live, Twitch or another service. Then tap Go Live while recording. The stream includes the scoreboard. You need a stable internet connection.</p>
 
 <h2 id="scoring">Scoring and remote control</h2>
 <h3>How do I use a second phone as a remote?</h3>
-<p>Both phones need MatchCam and the same Wi-Fi network. The recording phone needs MatchCam Pro (Remote Connect); the phones used as a remote don't. On the recording phone start the remote server; on the other phone choose the controller role and scan the QR code or pick the recorder from the list, then enter the 6-digit PIN. iPhone and Android phones can pair with each other.</p>
+<p>Both phones need MatchCam and the same Wi-Fi network. The recording phone needs MatchCam Pro; the phone used as a remote doesn't. On the recording phone, open the Remote chip and tap Start Remote Server (Start Server on Android). On the other phone, choose the Remote mode in New match, tap Connect, then pick the recorder under Found Recorders or enter its IP address. iPhone and Android phones can control each other.</p>
 <h3>The controller can't find the recorder.</h3>
-<p>Check that both phones are on the same Wi-Fi (not a guest network that isolates devices), that MatchCam has Local Network permission on iPhone (Settings → Privacy &amp; Security → Local Network), and try the QR code instead of the list.</p>
+<p>Check that both phones are on the same Wi-Fi (not a guest network that isolates devices), that MatchCam has Local Network permission on iPhone (Settings &rarr; Privacy &amp; Security &rarr; Local Network), and try Enter IP Address instead of the list.</p>
+<h3>Can the remote mark rallies?</h3>
+<p>No. The remote controls points, sets, the timer, timeouts, swapping sides and recording. Mark rallies on the recording phone or on the Apple Watch.</p>
 <h3>How do I fix a wrong point or swap sides?</h3>
 <p>Use the minus button to remove a point. The swap button flips the home and guest sides without changing names or scores.</p>
 
 <h2 id="watch">Apple Watch</h2>
-<h3>What can I do from the watch?</h3>
-<p>Keep score, run the timer, call timeouts and mark rallies. The watch stays in sync with your iPhone while the iPhone app is open.</p>
+<h3>How do I link my Apple Watch?</h3>
+<p>Install MatchCam on the Watch paired with your iPhone and open it. There is no pairing step: when you start a match on the iPhone, the Watch moves into it. New match on the iPhone shows Watch Connected.</p>
+<h3>What can I do from the Watch?</h3>
+<p>Keep score, run the timer, start, pause and stop the recording, call timeouts (while the iPhone is recording), finish or undo sets and mark rallies. To score a match on the Watch alone, tap Start on Watch.</p>
 
 <h2 id="after">After the match</h2>
 <h3>How do I mark and review rallies?</h3>
-<p>Tap the heart during the match (on the phone, the watch or the remote). After the match, open the match in History → Rallies to watch, favorite and trim each clip.</p>
+<p>Tap the heart while recording and choose Previous Rally (the one that just ended) or This Rally (the one in play, saved when it ends). On the Watch, tap Mark Rally. After the match, open History, choose the match and tap View Rallies.</p>
+<h3>How do I save a rally as a clip?</h3>
+<p>In Rallies, open a rally and choose Trim Clip. Set the start and end within 30 seconds of the recorded rally, tap Save, then Export Clip to save it to Photos or Gallery. This is free. The Clip Editor (MatchCam Pro) combines several rallies into one video in 16:9 or vertical 9:16.</p>
 <h3>How do I make a highlight reel?</h3>
-<p>In Rallies, tap Highlight Reel to export all your marked rallies as one video (MatchCam Pro).</p>
+<p>In Rallies, tap Highlight Reel to join all your marked rallies into one video (MatchCam Pro).</p>
 <h3>I kept score but recorded with another camera. Can I add the scoreboard?</h3>
 <p>Yes. Open the match in History and choose Annotate External Video, pick the video from your library and tap the points while it plays. Exporting the finished video with the scoreboard is a MatchCam Pro feature.</p>
-<h3>How do I link or unlink a video link?</h3>
-<p>In the match details, Link Video attaches a YouTube or other link. Unlink removes the link from the match; the video itself is not deleted.</p>
+<h3>How do I link or unlink a video?</h3>
+<p>In the match details, Link Video lets you paste a link for free. With MatchCam Pro you can also choose a video from your YouTube account. Unlink removes the link from the match; the video itself is not deleted.</p>
 <h3>How do tournaments work?</h3>
-<p>Create a tournament, add rounds and matches, and start each match from the bracket. Results are saved to the tournament automatically.</p>
+<p>Create a tournament, add rounds, then add matches to each round. Open a scheduled match's menu and choose Start Recording or Scorekeeper Only. The result is saved to the tournament, whose status moves from Upcoming to In progress to Completed. The next scheduled match appears on Home as Next up.</p>
 
 <h2 id="youtube">YouTube</h2>
 <h3>How do I upload a match to YouTube?</h3>
-<p>With MatchCam Pro, open a match with a video and tap Upload to YouTube. The first time, connect your YouTube account. Review the title, description, visibility, audience and playlist, then upload. You can leave the app while it uploads.</p>
+<p>With MatchCam Pro, open the match in History and tap Upload to YouTube. The first time, connect your YouTube account. Review the title, description, visibility, audience and playlist, then upload. Matches upload one at a time in a queue, and an upload resumes after a lost connection.</p>
+<h3>Where do I follow my uploads?</h3>
+<p>On Home while uploads are running, or in Settings &rarr; Connections &rarr; Upload Queue, where you can pause, retry, reorder or cancel.</p>
 <h3>Why is my YouTube upload private?</h3>
-<p>MatchCam uploads as Private by default so you can review the video first. Change the visibility in YouTube Studio when you're ready to share it.</p>
+<p>MatchCam uploads as Private by default so you can review the video first. Until YouTube completes its review of MatchCam, uploads also stay private if you pick Public or Unlisted. Change the visibility in YouTube Studio when you're ready to share it.</p>
 <h3>"This YouTube account can't upload videos longer than 15 minutes"</h3>
 <p>YouTube only accepts videos longer than 15 minutes from accounts that verified a phone number, and match videos are almost always longer. You can:</p>
 <ul>
-  <li>Verify the account at <a href="https://www.youtube.com/verify">youtube.com/verify</a> (free, takes a minute) and tap Check Again in MatchCam.</li>
+  <li>Verify the account at <a href="https://www.youtube.com/verify">youtube.com/verify</a> (free, takes a minute) and tap I Verified It &mdash; Check Again in MatchCam.</li>
   <li>Or connect a different YouTube account that is already verified (Use Another Account).</li>
 </ul>
 <h3>My channel doesn't appear when I connect</h3>
@@ -263,25 +305,25 @@ support = f'''<h1>Support</h1>
 <h3>Can I upload with the YouTube app instead?</h3>
 <p>Yes. Copy YouTube Details gives you the suggested title and a description with the set timestamps to paste in the YouTube app.</p>
 <h3>Is this video made for kids?</h3>
-<p>You decide. "Made for kids" turns off comments, notifications and personalized ads on the video. For Private uploads you can set it later in YouTube Studio. Publish players only with the consent of their parents or guardians and your club.</p>
+<p>You decide. "Made for kids" turns off comments, notifications and personalized ads on the video. Publish players only with the consent of their parents or guardians and your club.</p>
 
 <h2 id="pro">MatchCam Pro</h2>
 <h3>What does MatchCam Pro include?</h3>
-<p>YouTube upload, live streaming, Remote Connect (other phones as remotes), highlight reels, scoreboard export of videos from another camera, and backup and restore.</p>
+<p>YouTube upload, live streaming, the Clip Editor and highlight reel, Remote Connect (the recording phone accepts remotes), scoreboard export of videos from another camera, and backup and restore. See <a href="pro.html">Free vs Pro</a>.</p>
 <h3>How do I restore MatchCam Pro on a new phone?</h3>
-<p>Settings → Pro → Restore Purchases, signed in with the same Apple ID or Google account you used to buy it.</p>
+<p>Open Settings and tap Upgrade to Pro, then Restore Purchases, signed in with the same Apple ID or Google account you used to buy it. If you are already Pro, open MatchCam Pro in Settings and choose Restore purchases.</p>
 <h3>How do I cancel?</h3>
-<p>On iPhone: Settings app → your name → Subscriptions. On Android: Google Play → Profile → Payments &amp; subscriptions → Subscriptions.</p>
+<p>On iPhone: Settings app &rarr; your name &rarr; Subscriptions. On Android: Google Play &rarr; Profile &rarr; Payments &amp; subscriptions &rarr; Subscriptions.</p>
 <h3>Do you have promo codes?</h3>
-<p>If you received one, use Settings → Pro → Redeem Promo Code.</p>
+<p>If you received one, tap Upgrade to Pro in Settings, then Redeem Promo Code.</p>
 
 <h2 id="data">Your data</h2>
 <h3>How do I move my matches to a new phone?</h3>
-<p>Settings → Backup → Export Backup on the old phone, save the file to a cloud drive, then Import Backup on the new phone (MatchCam Pro). Videos move with your photo library, not with the backup.</p>
+<p>Settings &rarr; Data &rarr; Export backup on the old phone, save the file to a cloud drive, then Import backup on the new phone (MatchCam Pro). Videos move with your photo library, not with the backup.</p>
 <h3>How do I disconnect YouTube or delete MatchCam's YouTube data?</h3>
-<p>Settings → YouTube → Disconnect YouTube. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+<p>Settings &rarr; Connections &rarr; Disconnect YouTube. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
 <h3>Can I delete all my data?</h3>
-<p>Settings → Data → Delete All Data removes match history and tournaments from the app. Videos in your Camera Roll or Gallery are not affected.</p>
+<p>Settings &rarr; Delete all data removes match history and tournaments from the app. Videos in your Camera Roll or Gallery are not affected.</p>
 
 <h2 id="trouble">Troubleshooting</h2>
 <h3>The camera or microphone doesn't work</h3>
@@ -300,42 +342,48 @@ def feat(title, tier, platforms, text):
 P, A, W = "iPhone", "Android", "Apple Watch"
 FEATURE_GROUPS = [
   ("record", "Record", "The scoreboard is burned into the video while you film.", [
-    feat("Scoreboard overlay", "free", [P, A], "<p>Team names and colors, points, sets won, set history and the match clock are drawn into every frame, with the MatchCam watermark in the corner.</p>"),
-    feat("HD and 4K recording", "free", [P, A], "<ul><li>iPhone: 1080p, ultra-wide camera when available.</li><li>Android: up to 4K (3840×2160), H.265 or H.264.</li><li>Zoom, audio, pause and resume in one video.</li></ul>"),
-    feat("Timeout countdown", "free", [P, A, W], "<p>A 30-second countdown on screen. Recording pauses and resumes on the next point.</p>"),
-    feat("Crash recovery", "free", [P, A], "<p>If the app closes mid-match, the recorded segments are found on the next launch and can be merged into one video or discarded.</p>"),
+    feat("Scoreboard overlay", "free", [P, A], "<p>Team names and colors, points, sets won and the match clock are drawn into every frame. A small MatchCam watermark sits in the corner and stays on, even with Pro.</p>"),
+    feat("4K, 1080p and 720p", "free", [P, A], "<ul><li>iPhone offers 4K, 1080p and 720p, depending on your device. Android offers 720p, 1080p and 4K.</li><li>Starts at 1080p. Zoom, audio, pause and resume in one video.</li></ul>"),
+    feat("Timeouts", "free", [P, A, W], "<p>A 60-second timeout. The video keeps 3 seconds with a banner, then the recording pauses and resumes after 60 seconds, on the next point, or when you tap Resume Now.</p>"),
+    feat("Crash recovery", "free", [P, A], "<p>If the app closes mid-match, Home shows the unsaved recording. Review it to re-merge the segments into one video, or delete them.</p>"),
     feat("Live streaming", "pro", [P, A], "<p>Stream the camera with the scoreboard to YouTube Live, Twitch or any RTMP server. Add the server URL and stream key in Settings, then tap Go Live while recording.</p>"),
   ]),
   ("score", "Keep score", "Volleyball rules built in.", [
-    feat("Match setup", "free", [P, A, W], "<ul><li>Home and guest names and colors, remembered between matches.</li><li>Official rules: best of 3 or best of 5.</li><li>Custom rules: sets, points per set, tie-break points, hard cap or win by 2.</li></ul>"),
-    feat("Scorekeeper mode", "free", [P, A], "<p>Keep score without the camera. Set wins are detected for you, with Finish Set, Undo Set and a shareable scoreboard image with the match duration.</p>"),
+    feat("Match setup", "free", [P, A], "<ul><li>Practice or Tournament matches.</li><li>Official rules: best of 3 or best of 5, sets to 25 and the deciding set to 15, win by 2.</li><li>Custom rules: 1 to 7 sets, points per set, tie-break points and a hard cap.</li></ul>"),
+    feat("Scorekeeper mode", "free", [P, A], "<p>Keep score without the camera. Set wins are detected for you, with Finish Set, Undo Set, a Scoreboard tab and a shareable scoreboard image.</p>"),
     feat("Side swap", "free", [P, A], "<p>Flip home and guest sides when teams change ends, without changing names or scores.</p>"),
   ]),
+  ("teams", "Teams and rivals", "Set up once, reuse every match.", [
+    feat("My team and seasons", "free", [P, A], "<p>Create your team in the Teams tab, then add a season with its category, year and two colors. In New match, pick the season and whether your team plays as Home or Guest.</p>"),
+    feat("Rivals", "free", [P, A], "<p>Each rival keeps its name, background color and text color. Add them by hand, or let MatchCam remember them when a match starts. Rival names are suggested as you type.</p>"),
+  ]),
   ("devices", "Watch and remotes", "Score from your wrist or from another phone.", [
-    feat("Apple Watch", "free", [W], "<ul><li>Add or remove points, finish and undo sets.</li><li>Start, pause and stop the iPhone recording and timer.</li><li>Mark rallies and call timeouts.</li><li>Start Offline to score a match on the watch alone.</li></ul>"),
-    feat("Phone as a remote", "free", [P, A], "<p>Control a recording phone from another phone over Wi-Fi: points, recording, timer, rallies and reset. Connect with a QR code, the nearby list or an IP address, and pair with a 6-digit PIN. iPhone and Android work together.</p>"),
+    feat("Apple Watch", "free", [W], "<ul><li>Add points, finish and undo sets, swap sides.</li><li>Start, pause and stop the iPhone recording and see the timer.</li><li>Mark rallies and call timeouts while the iPhone records.</li><li>Start on Watch scores a match on the Watch alone.</li></ul>"),
+    feat("Phone as a remote", "free", [P, A], "<p>Control a recording phone from another phone over Wi-Fi: points, finish or undo a set, timer, timeouts, swapping sides, and start, pause and stop. Find the recorder in the list or enter its IP address. iPhone and Android work together.</p>"),
     feat("Remote Connect", "pro", [P, A], "<p>Let other phones control the recording phone. Pro is needed only on the phone that records; the phones used as a remote stay free.</p>"),
   ]),
   ("review", "Review", "Find the plays that matter.", [
-    feat("Rally marking", "free", [P, A, W], "<p>Tap the ♥ on the phone, the watch or a remote to mark a rally. Taps within 5 seconds count as one mark.</p>"),
-    feat("Rallies and clips", "free", [P, A], "<p>Watch every marked rally, filter favorites, trim a clip within ±30 seconds and save it as its own video.</p>"),
+    feat("Rally marking", "free", [P, A, W], "<p>Tap the heart while recording and choose Previous Rally (the one that just ended) or This Rally (the one in play). On the Watch, tap Mark Rally.</p>"),
+    feat("Trim a rally clip", "free", [P, A], "<p>Watch every marked rally in View Rallies, trim it within 30 seconds either side, and Export Clip to Photos or Gallery.</p>"),
+    feat("Clip Editor", "pro", [P, A], "<p>Pick rallies, reorder and trim them, and choose Standard 16:9 or Short 9:16 (up to 3 minutes). Preview, then save to Photos, share or upload to YouTube.</p>"),
+    feat("Highlight reel", "pro", [P, A], "<p>Join all marked rallies of a match into one video, in order, ready to share.</p>"),
     feat("Match stats", "free", [P, A], "<p>Score progression and a set-by-set breakdown for each saved match.</p>"),
     feat("Annotate a video from another camera", "free", [P, A], "<p>Link a video from your library to a scorekeeper match, play it at 1× or 2× and tap the points as they happen. MatchCam suggests the end of each set and warns when the score doesn't match.</p>"),
-    feat("Highlight reel", "pro", [P, A], "<p>Join all marked rallies of a match into one video, in order, ready to share.</p>"),
-    feat("Scoreboard export", "pro", [P, A], "<p>Export an annotated video from another camera with the scoreboard burned in: whole match or one set, up to 1080p, original audio kept. Keeps going in the background.</p>"),
+    feat("Scoreboard export", "pro", [P, A], "<p>Export that annotated video with the scoreboard burned in: whole match or one set, up to 1080p, original audio kept. Keeps going in the background.</p>"),
   ]),
   ("history", "History and tournaments", "Every match is saved automatically.", [
-    feat("Match history", "free", [P, A], "<p>Set-by-set scores, duration, the recorded video, the rules used and the rallies of each match.</p>"),
-    feat("Tournaments", "free", [P, A], "<p>Build a tournament with rounds and matches, start a match from the bracket and get the result saved back automatically.</p>"),
-    feat("Video links", "free", [P, A], "<p>Attach a YouTube, Vimeo or Drive link to a match, watch YouTube links inside the app, and unlink when needed. The video itself is never deleted.</p>"),
+    feat("Match history", "free", [P, A], "<p>Set-by-set scores, duration, the recorded video, the rules used, the recording log and the rallies of each match.</p>"),
+    feat("Tournaments", "free", [P, A], "<p>Build a tournament from rounds and matches. Start a scheduled match from its menu as Start Recording or Scorekeeper Only, and its status moves from Upcoming to In progress to Completed. Home shows your next scheduled match.</p>"),
+    feat("Video links", "free", [P, A], "<p>Paste a link to attach a video to a match, and unlink when needed. The video itself is never deleted.</p>"),
   ]),
   ("share", "Share", "From the court to YouTube.", [
-    feat("YouTube upload", "pro", [P, A], "<ul><li>Upload to your channel from the match or right after recording.</li><li>Title and description with the result and set chapters, ready to edit.</li><li>Private by default; pick a playlist or create one (tournament name suggested).</li><li>Resumes after a lost connection; Wi-Fi only option.</li></ul>"),
+    feat("YouTube upload", "pro", [P, A], "<ul><li>Upload from a match in History or from the Clip Editor.</li><li>Title and description with the result and set chapters, ready to edit.</li><li>Private by default; pick a playlist or create one.</li><li>A queue sends matches one at a time and resumes after a lost connection. Wi-Fi only option.</li></ul>"),
     feat("Copy YouTube details", "pro", [P, A], "<p>Prefer the YouTube app? Get the title and a description with set timestamps (for example “0:42 Set 1 (25-21)”), edit them and copy.</p>"),
+    feat("Choose a video from your YouTube", "pro", [P, A], "<p>Link a video you already uploaded to a match. Pasting a link instead is free.</p>"),
     feat("Scoreboard image", "free", [P, A], "<p>Share a clean image of the final scoresheet.</p>"),
   ]),
   ("data", "Your data", "Stays on your device unless you move it.", [
-    feat("Backup &amp; restore", "pro", [P, A], "<p>Export match history to iCloud Drive, Google Drive or any cloud storage and import it on a new phone. Videos move with your photo library.</p>"),
+    feat("Backup &amp; restore", "pro", [P, A], "<p>Export match history to any cloud storage and import it on a new phone from Settings &rarr; Data. Videos move with your photo library.</p>"),
     feat("Export and delete", "free", [P, A], "<p>Export match history as a JSON file, or delete all matches and tournaments. Videos in Photos or Gallery are not touched.</p>"),
   ]),
 ]
@@ -343,42 +391,37 @@ FEATURE_GROUPS = [
 COMPARE = [
   ("Recording with scoreboard overlay, timeouts, crash recovery", True),
   ("Scorekeeper mode, rules setup, side swap", True),
+  ("My team, seasons and rivals", True),
+  ("Tournaments and match history", True),
   ("Apple Watch scoring and recording control", True),
   ("Using your phone as a remote", True),
-  ("Rally marking, rally clips and trimming", True),
-  ("Match history, stats, tournaments, video links", True),
+  ("Rally marking and trimming a rally clip", True),
+  ("Match stats, scoreboard image, video links by pasting a link", True),
   ("Annotating a video from another camera", True),
   ("Export history as JSON, delete all data", True),
-  ("YouTube upload and Copy YouTube details", False),
+  ("YouTube upload, upload queue and Copy YouTube details", False),
+  ("Choosing a video from your own YouTube", False),
+  ("Clip Editor (Standard and Short formats)", False),
+  ("Highlight reel", False),
   ("Live streaming", False),
   ("Remote Connect (the recording phone accepts remotes)", False),
-  ("Highlight reel", False),
   ("Scoreboard export of videos from another camera", False),
   ("Backup &amp; restore", False),
 ]
 
-jump = " · ".join(f'<a href="#{gid}">{name}</a>' for gid, name, _, _ in FEATURE_GROUPS) + ' · <a href="#compare">Free vs Pro</a>'
+jump = " · ".join(f'<a href="#{gid}">{name}</a>' for gid, name, _, _ in FEATURE_GROUPS)
 groups_html = "\n".join(
     f'<h2 id="{gid}">{name}</h2>\n<p class="muted">{sub}</p>\n<div class="features">\n  ' + "\n  ".join(items) + "\n</div>"
     for gid, name, sub, items in FEATURE_GROUPS)
 rows = "\n".join(
-    f'  <tr><td>{label}</td><td class="c {"yes" if free else "no"}">{"✓" if free else "—"}</td><td class="c yes">✓</td></tr>'
+    f'  <tr><td>{label}</td><td class="c {"yes" if free else "no"}">{'<span aria-hidden="true">✓</span><span class="sr">Included</span>' if free else '<span aria-hidden="true">—</span><span class="sr">Not included</span>'}</td><td class="c yes"><span aria-hidden="true">✓</span><span class="sr">Included</span></td></tr>'
     for label, free in COMPARE)
 
 features = f'''<h1>Features</h1>
-<p class="lead">Everything MatchCam does on iPhone, Android and Apple Watch. Recording and scoring a match is free; <span class="tag pro">Pro</span> features publish, connect or protect your matches.</p>
+<p class="lead">Everything MatchCam does on iPhone, Android and Apple Watch. Recording and scoring a match is free; <span class="tag pro">Pro</span> features publish, connect or protect your matches. See <a href="pro.html">Free vs Pro</a>.</p>
 <p class="jump">{jump}</p>
 
 {groups_html}
-
-<h2 id="compare">Free vs Pro</h2>
-<div class="table-wrap">
-<table class="compare">
-  <tr><th>Feature</th><th class="c">Free</th><th class="c">Pro</th></tr>
-{rows}
-</table>
-</div>
-<p>MatchCam Pro is a monthly or yearly subscription through the App Store or Google Play. See the <a href="terms.html">Terms of Use</a>.</p>
 
 <h2>Requirements</h2>
 <ul>
@@ -388,13 +431,120 @@ features = f'''<h1>Features</h1>
 </ul>
 <p>Questions? Visit <a href="support.html">Support</a>.</p>'''
 
+def howto(title, steps, note=""):
+    li = "".join(f"<li>{s}</li>" for s in steps)
+    extra = f"<p>{note}</p>" if note else ""
+    return f'<details class="howto"><summary>{title}</summary><ol class="steps">{li}</ol>{extra}</details>'
+
+HOWTOS = [
+  howto("Record your first match", [
+    "On Home tap <strong>Start recording</strong>, or open the <strong>Record</strong> tab. The New match sheet opens.",
+    "Set Mode to <strong>Record</strong>.",
+    "Enter the <strong>Home Team</strong> and <strong>Guest Team</strong> names and colors. To use a saved team, pick its season under <strong>My team</strong>.",
+    "Under Game Format &rarr; <strong>Rules</strong>, choose Official (Best of 3 or 5) or Custom Rules.",
+    "Tap <strong>Start recording</strong>. The first time, read <strong>Before you record</strong> and tap <strong>I agree</strong>.",
+    "Hold the phone in landscape. Tap the score buttons for points and the heart to mark a rally.",
+    "Stop when the match ends. It is saved in <strong>History</strong> and the video goes to Photos or Gallery.",
+  ]),
+  howto("Set up your team and season", [
+    "Open the <strong>Teams</strong> tab, tap <strong>+</strong> and choose <strong>New team</strong>. Enter the name and tap <strong>Add</strong>.",
+    "Open the team, then <strong>Manage seasons</strong> &rarr; <strong>Add season</strong>.",
+    "Set the <strong>Category</strong>, <strong>Year</strong>, <strong>Color A</strong> and <strong>Color B</strong>, and check the <strong>Preview</strong>.",
+    "In New match, choose the season under <strong>My team</strong> and set whether your team plays as Home or Guest.",
+  ]),
+  howto("Add rivals", [
+    "Open <strong>Teams</strong> &rarr; your team &rarr; <strong>Manage rivals</strong>, tap <strong>+</strong> and choose <strong>Add rival</strong>.",
+    "Set the name, <strong>Background color</strong> and <strong>Text color</strong>.",
+    "Or just type an opponent's name in New match while a season is selected. MatchCam saves it as a rival when the match starts.",
+  ]),
+  howto("Create a tournament and start a scheduled match", [
+    "Open the <strong>Tourneys</strong> tab, tap <strong>+</strong> &rarr; <strong>New Tournament</strong>, enter a name and tap <strong>Create</strong>.",
+    "Tap <strong>+ Round</strong> &rarr; <strong>New Round</strong>. Name it, optionally use <strong>Copy Rules From</strong>, then <strong>Add</strong>.",
+    "In the round tap <strong>+ Match</strong>, choose Source <strong>Schedule</strong>, pick the teams, turn on <strong>Set Scheduled Date/Time</strong> and tap <strong>Add</strong>.",
+    "On match day, the <strong>Next up</strong> card on Home shows the match. <strong>Start this match</strong> opens the tournament.",
+    "Open the match menu and choose <strong>Start Recording</strong> (or <strong>Scorekeeper Only</strong>). The result is saved back to the tournament.",
+  ], "A tournament is Upcoming until its first match is played, In progress while matches remain, and Completed when none are left."),
+  howto("Keep score with Scorekeeper", [
+    "In New match, set Mode to <strong>Scorekeeper</strong>, enter the teams and rules, and tap <strong>Start scorekeeping</strong>.",
+    "Use + and &minus; for points, and Finish Set or Undo Set when needed.",
+    "Open the <strong>Scoreboard</strong> tab and tap <strong>Share scoreboard</strong> to send an image.",
+    "Recorded the match on another camera? Later, in History, use <strong>Link Video</strong> or <strong>Annotate External Video</strong>.",
+  ]),
+  howto("Mark rallies and share a clip", [
+    "While recording, tap the <strong>heart</strong> and choose <strong>Previous Rally</strong> (the one that just ended) or <strong>This Rally</strong> (the one in play). On the Apple Watch tap <strong>Mark Rally</strong>.",
+    "After the match open <strong>History</strong> &rarr; the match &rarr; <strong>View Rallies</strong>.",
+    "Free: open a rally, choose <strong>Trim Clip</strong>, adjust the start and end, tap <strong>Save</strong>, then <strong>Export Clip</strong> to save it to Photos or Gallery.",
+    "Pro: open the <strong>Clip Editor</strong>, pick rallies and a format (Standard 16:9 or Short 9:16), then <strong>Share</strong>, <strong>Save to Photos</strong> or <strong>Upload to YouTube</strong>. <strong>Highlight Reel</strong> joins every marked rally into one video.",
+  ]),
+  howto("Control a match from a second phone (Remote)", [
+    "Put both phones on the same Wi-Fi network.",
+    "On the recording phone (needs Pro), start recording, open the <strong>Remote</strong> chip and tap <strong>Start Remote Server</strong> (<strong>Start Server</strong> on Android).",
+    "On the second phone (free), open New match, set Mode to <strong>Remote</strong> and tap <strong>Connect</strong>. Choose the recording phone under <strong>Found Recorders</strong>, or tap <strong>Enter IP Address</strong>.",
+    "Control points, sets, the timer, timeouts, swapping sides, and start, pause and stop recording.",
+  ], "A remote phone can't mark rallies. Mark them on the recording phone or the Apple Watch."),
+  howto("Link your Apple Watch", [
+    "Install MatchCam on the Apple Watch paired with your iPhone. There is no pairing step in the app.",
+    "Open the Watch app. It shows <strong>iPhone connected</strong>, and New match on the iPhone shows <strong>Watch Connected</strong>.",
+    "Start a match on the iPhone and the Watch moves into it. To score on the Watch alone, tap <strong>Start on Watch</strong>.",
+  ]),
+  howto("Upload a match to YouTube (Pro)", [
+    "Open <strong>History</strong> &rarr; the match &rarr; <strong>Upload to YouTube</strong>.",
+    "The first time, <strong>connect your YouTube account</strong>, then set the default visibility, audience and Upload on Wi-Fi Only.",
+    "Review the <strong>Title</strong>, <strong>Description</strong>, <strong>Visibility</strong>, <strong>Audience</strong> and <strong>Playlist</strong>, then tap <strong>Upload</strong>. The match joins the queue.",
+    "Follow progress on Home or in Settings &rarr; <strong>Connections</strong> &rarr; <strong>Upload Queue</strong>.",
+    "To upload with the YouTube app instead, use <strong>Copy YouTube Details</strong>.",
+  ]),
+  howto("Back up or export your data", [
+    "On Home open the <strong>&hellip;</strong> menu &rarr; <strong>Settings</strong> &rarr; <strong>Data</strong>.",
+    "Pro: tap <strong>Export backup</strong> and save the file to a cloud drive. On the new phone tap <strong>Import backup</strong>.",
+    "Free: <strong>Export data</strong> saves a JSON file of your match history.",
+  ], "Videos are not included in a backup. They stay in Photos or Gallery."),
+]
+
+how_to = f'''<h1>How to</h1>
+<p class="lead">Short guides for the things people do most. Tap a title to open it. Anything else is in <a href="support.html">Support</a>.</p>
+{chr(10).join(HOWTOS)}'''
+
+pro = f'''<h1>MatchCam Pro</h1>
+<p class="lead">Recording and scoring a match is free, with no time limit. Pro adds the extras that publish, connect or protect your matches.</p>
+
+<h2>What Pro adds</h2>
+<div class="features">
+  <div class="card feat is-pro"><h3>YouTube upload</h3><p>Upload matches to your channel with chapters, playlists and a queue that resumes after a lost connection.</p></div>
+  <div class="card feat is-pro"><h3>Clip Editor and highlight reel</h3><p>Combine rallies into one video in 16:9 or vertical 9:16, or join every marked rally automatically.</p></div>
+  <div class="card feat is-pro"><h3>Live streaming</h3><p>Stream the match with the scoreboard to YouTube Live, Twitch or any RTMP server.</p></div>
+  <div class="card feat is-pro"><h3>Remote Connect</h3><p>Let other phones control the recording phone. The phones used as a remote stay free.</p></div>
+  <div class="card feat is-pro"><h3>Scoreboard export</h3><p>Burn the scoreboard into a video recorded with another camera.</p></div>
+  <div class="card feat is-pro"><h3>Backup &amp; restore</h3><p>Move your match history to a new phone through any cloud storage.</p></div>
+</div>
+
+<h2 id="compare">Free vs Pro</h2>
+<div class="table-wrap">
+<table class="compare">
+  <tr><th>Feature</th><th class="c">Free</th><th class="c">Pro</th></tr>
+{rows}
+</table>
+</div>
+<p>The MatchCam watermark stays on every video, with or without Pro.</p>
+
+<h2>Subscription</h2>
+<ul>
+  <li>MatchCam Pro is an auto-renewable subscription, monthly or yearly. The price is shown in the app before you buy.</li>
+  <li>Payment goes through the App Store or Google Play. You can cancel any time in your App Store or Google Play subscriptions.</li>
+  <li>New phone? Open Settings, tap Upgrade to Pro, then Restore Purchases.</li>
+  <li>Got a promo code? Tap Redeem Promo Code on the same screen.</li>
+</ul>
+<p>Details are in the <a href="terms.html">Terms of Use</a>. Questions? Visit <a href="support.html">Support</a>.</p>'''
+
 out = pathlib.Path(__file__).resolve().parent.parent
 for f, t, d, b in [
-    ("index.html", "MatchCam", "Record volleyball matches with a live scoreboard, mark rallies and upload to YouTube.", index),
-    ("features.html", "MatchCam Features", "Every MatchCam feature on iPhone, Android and Apple Watch, with a Free vs Pro comparison.", features),
+    ("index.html", "MatchCam", "Record volleyball matches with a live scoreboard, mark rallies and share highlights.", index),
+    ("features.html", "MatchCam Features", "Every MatchCam feature on iPhone, Android and Apple Watch.", features),
+    ("how-to.html", "MatchCam How to", "Step-by-step guides: record a match, set up teams, run tournaments, mark rallies, use a remote and upload to YouTube.", how_to),
+    ("pro.html", "MatchCam Pro", "What MatchCam Pro adds, and a Free vs Pro comparison.", pro),
     ("privacy.html", "MatchCam Privacy Policy", "How the MatchCam app handles your data, including YouTube uploads.", privacy),
     ("terms.html", "MatchCam Terms of Use", "Terms of use for the MatchCam app and MatchCam Pro subscriptions.", terms),
     ("support.html", "MatchCam Support", "Help and answers for MatchCam.", support),
 ]:
     (out / f).write_text(page(f, t, d, b))
-print(f"Built {len(PAGES)} pages in {out}")
+print(f"Built {len(PAGES) + 2} pages in {out}")
