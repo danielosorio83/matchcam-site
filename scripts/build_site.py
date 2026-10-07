@@ -8,11 +8,11 @@ Pages are written to the repository root, because their URLs are public
 Styles, fonts and images live in assets/ and are not generated.
 """
 import pathlib
-UPDATED = "October 7, 2026"
+UPDATED = "September 29, 2026"
 EMAIL = "support@matchcam.app"
-POLICY_VERSION = "1.1"
-PRIVACY_VERSION = "1.1"
-PRIVACY_UPDATED = "October 7, 2026"
+POLICY_VERSION = "1.0"
+PRIVACY_VERSION = "1.0"
+PRIVACY_UPDATED = "October 1, 2026"
 PAGES = [("index.html","Home"),("features.html","Features"),("how-to.html","How to"),("pro.html","Pro"),("support.html","Support")]
 
 def page(file, title, desc, body):
@@ -171,8 +171,7 @@ privacy = f'''<h1>Privacy Policy</h1>
 <h2 id="version-history">Version history</h2>
 <table>
   <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
-  <tr><td>{PRIVACY_VERSION}</td><td>{PRIVACY_UPDATED}</td><td>Contact email changed to {EMAIL}; corrected the Settings path to disconnect YouTube and the remote connection wording.</td></tr>
-  <tr><td>1.0</td><td>October 1, 2026</td><td>First published version.</td></tr>
+  <tr><td>{PRIVACY_VERSION}</td><td>{PRIVACY_UPDATED}</td><td>First published version.</td></tr>
 </table>'''
 
 terms = f'''<h1>Terms of Use</h1>
@@ -223,8 +222,7 @@ terms = f'''<h1>Terms of Use</h1>
 <h2 id="version-history">Version history</h2>
 <table>
   <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
-  <tr><td>{POLICY_VERSION}</td><td>{UPDATED}</td><td>Added the recording terms the app asks you to accept before your first recording; contact email changed to {EMAIL}.</td></tr>
-  <tr><td>1.0</td><td>September 29, 2026</td><td>First published version.</td></tr>
+  <tr><td>{POLICY_VERSION}</td><td>{UPDATED}</td><td>First published version.</td></tr>
 </table>'''
 
 support = f'''<h1>Support</h1>
