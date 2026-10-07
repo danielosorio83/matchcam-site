@@ -76,18 +76,18 @@ p, li { max-width: 72ch; }
 .hero .lead { color: #C5CEE6; }
 .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
 .hero .button.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
-.court { position: relative; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: linear-gradient(160deg, #1C5B8A 0%, #0F3A63 55%, #0A2547 100%); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35); }
-.court::before { content: ""; position: absolute; inset: 14% 8% 30% 8%; border: 3px solid rgba(255, 255, 255, 0.45); border-radius: 4px; }
-.court::after { content: ""; position: absolute; left: 50%; top: 14%; bottom: 30%; width: 3px; background: rgba(255, 255, 255, 0.45); }
-.rec { position: absolute; top: 12px; left: 14px; display: flex; align-items: center; gap: 8px; font: 700 14px var(--display); letter-spacing: 0.08em; color: #fff; z-index: 1; }
-.rec i { width: 10px; height: 10px; border-radius: 50%; background: #FF3B30; animation: blink 1.4s steps(2, jump-none) infinite; }
-@keyframes blink { 50% { opacity: 0.25; } }
-.scoreboard { position: absolute; left: 4%; right: 4%; bottom: 6%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; background: rgba(8, 15, 36, 0.88); border-radius: 10px; overflow: hidden; font-family: var(--display); color: #fff; z-index: 1; }
-.scoreboard .team { display: flex; align-items: center; gap: 10px; padding: 8px 12px; font-weight: 700; font-size: clamp(15px, 2.6vw, 22px); letter-spacing: 0.04em; }
-.scoreboard .team.right { justify-content: flex-end; }
-.scoreboard .swatch { width: 10px; align-self: stretch; margin: -8px 0; }
-.scoreboard .pts { display: flex; align-items: center; gap: 10px; background: var(--yellow); color: var(--navy); font-weight: 800; font-size: clamp(24px, 4.6vw, 40px); padding: 0 16px; font-variant-numeric: tabular-nums; }
-.scoreboard .sets { white-space: nowrap; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; align-self: center; }
+.court { container-type: inline-size; position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: linear-gradient(180deg, #2B3550 0%, #3A4566 58%, #B98A4E 58%, #A67A42 100%); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35); }
+.court::before { content: ""; position: absolute; left: 6%; right: 6%; top: 68%; bottom: 8%; border: 2px solid rgba(255, 255, 255, 0.6); transform: perspective(300px) rotateX(18deg); }
+.net { position: absolute; left: 4%; right: 4%; top: 46%; height: 12%; border-top: 3px solid rgba(255, 255, 255, 0.85); background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px 12px), repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px 12px); }
+/* Mirrors VolleyballScoreboardRenderer: two team rows at 50% opacity and a dark clock strip, top-left, drawn about 3x larger so it stays legible here. */
+.scoreboard { position: absolute; left: 5.3cqw; top: 5.3cqw; width: 42.8cqw; border-radius: 1.4cqw; overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.2); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: #fff; }
+.scoreboard .row { display: flex; align-items: center; height: 7.9cqw; }
+.scoreboard .row.home { background: rgba(229, 56, 75, 0.5); }
+.scoreboard .row.guest { background: rgba(31, 111, 235, 0.5); border-top: 1px solid rgba(0, 0, 0, 0.2); }
+.scoreboard .name { width: 18.4cqw; padding-left: 2.4cqw; font-weight: 700; font-size: 3.15cqw; letter-spacing: 0; }
+.scoreboard .set { flex: 0 0 7.9cqw; text-align: center; font-weight: 800; font-size: 3.4cqw; font-variant-numeric: tabular-nums; align-self: stretch; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(0, 0, 0, 0.1); }
+.scoreboard .set.win span, .scoreboard .set.win { text-decoration: underline; text-decoration-thickness: 0.45cqw; text-underline-offset: 0.5cqw; }
+.scoreboard .clock { height: 5.25cqw; display: flex; align-items: center; justify-content: flex-end; padding-right: 2.4cqw; background: rgba(26, 26, 26, 0.7); color: #D3D3D3; font-weight: 700; font-size: 2.5cqw; font-variant-numeric: tabular-nums; }
 @media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding: 28px 20px; } }
 
 /* Buttons, tags, cards */
@@ -142,6 +142,5 @@ footer .links { display: flex; gap: 6px 18px; flex-wrap: wrap; margin: 0 0 8px; 
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rec i { animation: none; }
   .button { transition: none; }
 }
