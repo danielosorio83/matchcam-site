@@ -16,7 +16,7 @@ Static pages for the MatchCam app, served with GitHub Pages.
 | `terms.html` | https://danielosorio83.github.io/matchcam-site/terms.html | Terms of use (required for auto-renewable subscriptions) |
 | `support.html` | https://danielosorio83.github.io/matchcam-site/support.html | Support page (App Store support URL) |
 
-Contact: matchcam2026@gmail.com
+Contact: support@matchcam.app
 
 ## Structure
 
