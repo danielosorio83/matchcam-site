@@ -112,7 +112,7 @@ index = f'''<section class="hero">
 <h2>Requirements</h2>
 <ul>
   <li>iPhone with iOS 26 or later. Apple Watch is optional.</li>
-  <li>Android phone with Android 8.0 or later.</li>
+  <li>Android phone with Android 10 or later.</li>
   <li>Remote control, live streaming and YouTube upload need Wi-Fi or an internet connection.</li>
 </ul>
 <p>Questions? Visit <a href="support.html">Support</a>.</p>'''
@@ -431,7 +431,7 @@ features = f'''<h1>Features</h1>
 <h2>Requirements</h2>
 <ul>
   <li>iPhone with iOS 26 or later. Apple Watch with watchOS 26 or later is optional.</li>
-  <li>Android phone with Android 8.0 or later.</li>
+  <li>Android phone with Android 10 or later.</li>
   <li>Remotes, live streaming and YouTube upload need Wi-Fi or an internet connection. YouTube needs a verified account for videos longer than 15 minutes.</li>
 </ul>
 <p>Questions? Visit <a href="support.html">Support</a>.</p>'''
